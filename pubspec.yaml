@@ -38,6 +38,7 @@ dependencies:
   flutter_screenutil:
   flutter_native_splash: ^2.4.7
   page_transition: ^2.2.1
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_test:
