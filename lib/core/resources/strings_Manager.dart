@@ -14,7 +14,34 @@ abstract final class StringsManager {
   static String get next => "Next";
   static String get back => "Back";
   static String get finish => "Finish";
-
+  static String get email => "Email";
+  static String get password => "Password";
+  static String get forgetPassword => "Forget Password ?";
+  static String get login => "Login";
+  static String get doNotHaveAccount  => "Don’t Have Account ? ";
+  static String get createOne => "Create One";
+  static String get or => "OR";
+  static String get loginWithGoogle => "Login With Google";
+  static String get emailRequired => "Email is required";
+  static String get invalidEmail => "Invalid Email Address";
+  static String get nameRequired => "Name is required";
+  static String get nameAtLeast => "Name must be at least 3 characters";
+  static String get passwordRequired => "Password is required";
+  static String get passwordAtLeast => "Password must be at least 8 characters";
+  static String get passwordInvalid => "Password must contain uppercase, lowercase, number, and special character";
+  static String get confirmPasswordRequired => "Please confirm your password";
+  static String get passwordNotMatch => "Passwords do not match";
+  static String get phoneRequired => "Phone number is required";
+  static String get invalidPhone => "Invalid phone number";
+  static String get avatar => "Avatar";
+  static String get name => "Name";
+  static String get confirmPassword => "Confirm Password";
+  static String get phoneNumber => "Phone Number";
+  static String get createAccount => "Create Account";
+  static String get alreadyHaveAccount => "Already Have Account ? ";
+  static String get register => "Register";
+  static String get forgetPasswordTitle => "Forget Password";
+  static String get verifyEmail => "Verify Email";
 
 
 }
