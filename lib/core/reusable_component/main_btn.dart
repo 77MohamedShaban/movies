@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:movies/core/resources/assets_manager.dart';
 
 class MainBtn extends StatelessWidget {
   final String text;
   final void Function()? onClick;
   final bool isBorder;
+  final bool isGoogleBtn;
+final double fontSize;
 
   const MainBtn({
     super.key,
     required this.text,
     required this.onClick,
-    this.isBorder = false,
+    this.isBorder = false, this.isGoogleBtn =false, this.fontSize =20,
   });
 
   @override
@@ -32,15 +37,30 @@ class MainBtn extends StatelessWidget {
         minimumSize: Size.fromHeight(55.h),
       ),
       onPressed: onClick,
-      child: Text(
-        text,
-        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-          color: isBorder
-              ? Theme.of(context).colorScheme.onPrimaryContainer
-              : Theme.of(context).colorScheme.primary,
-        ),
-        textAlign: TextAlign.center,
+      child: Row(
+        spacing: 12.w,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if(isGoogleBtn)
+            SvgPicture.asset(AssetsManager.iconGoogle)
+          ,Text(
+            text,
+            style: Theme.of(context).textTheme.displayMedium?.copyWith(
+              color: isBorder
+                  ? Theme.of(context).colorScheme.onPrimaryContainer
+                  : Theme.of(context).colorScheme.primary,
+              fontSize: fontSize,
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
+    ).animate(onPlay: (controller) => controller.repeat())
+        .shimmer(
+      duration: 1200.ms,
+      color: Colors.white.withValues(alpha: .5),
+      angle: 45,
+      stops: [0.4, 0.5, 0.6],
     );
   }
 }

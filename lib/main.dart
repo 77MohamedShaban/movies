@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         onGenerateRoute: RouteGenerator.getRoute,
         initialRoute: PrefsManager.getBuildOnBoarding()
-            ? RoutesName.signUp
+            ? RoutesName.logIn
             : RoutesName.onBoarding,
       ),
     );
