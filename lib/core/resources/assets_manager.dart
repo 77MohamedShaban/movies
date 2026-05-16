@@ -25,5 +25,9 @@ abstract final class AssetsManager {
   static const String egyptFlag = "assets/images/EG.svg";
   static const String usaFlag = "assets/images/EN.svg";
   static const String forgotPassword = "assets/images/forgot_password_image.png";
+  static const String homeIcon = "assets/images/home_icon.svg";
+  static const String searchIcon = "assets/images/search_icon.svg";
+  static const String browseIcon = "assets/images/browse_icon.svg";
+  static const String profileIcon = "assets/images/profile_icon.svg";
 
 }

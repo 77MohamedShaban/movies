@@ -5,6 +5,7 @@ import 'package:movies/core/routes_manager/routes_name.dart';
 import 'package:movies/features/auth/presentation/screens/forget_password/forget_password_screen.dart';
 import 'package:movies/features/auth/presentation/screens/log_in/log_in_screen.dart';
 import 'package:movies/features/intro/presentation/screens/on_boarding/on_boarding_screen.dart';
+import 'package:movies/features/main_layout/main_layout.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../features/auth/presentation/screens/sign_up/sign_up_screen.dart';
 
@@ -30,6 +31,11 @@ class RouteGenerator {
         return PageTransition(
           type: PageTransitionType.fade,
           child: ForgetPasswordScreen(),
+        );
+      case RoutesName.mainLayout:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: MainLayout(),
         );
       default:
         return unDefinedRoute();

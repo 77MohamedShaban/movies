@@ -10,6 +10,15 @@ class AppTheme {
       centerTitle: true,
       scrolledUnderElevation: 0,
     ),
+    navigationBarTheme: NavigationBarThemeData(
+      height: 61,
+      indicatorColor: Colors.transparent,
+      backgroundColor: ColorsManager.secondaryColor,
+      overlayColor: WidgetStatePropertyAll(
+        Colors.transparent,
+      ),
+      labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+    ),
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: ColorsManager.yellow,
       selectionHandleColor: ColorsManager.yellow,

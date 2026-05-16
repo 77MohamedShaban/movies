@@ -101,6 +101,8 @@ class _LogInScreenState extends State<LogInScreen> {
                   onClick: () {
                     if (formKey.currentState?.validate() ?? false) {
                       // authenticate
+                      Navigator.pushReplacementNamed(context, RoutesName.mainLayout);
+
                     }
                   },
                 ),

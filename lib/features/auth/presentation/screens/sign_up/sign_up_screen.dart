@@ -134,6 +134,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 onClick: () {
                   if (formKey.currentState?.validate() ?? false) {
                     // authenticate
+                    Navigator.pushReplacementNamed(context, RoutesName.mainLayout);
+
                   }
                 },
               ),
