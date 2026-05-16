@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movies/core/resources/app_constants.dart';
 import 'package:movies/core/resources/strings_Manager.dart';
 
@@ -12,11 +11,25 @@ class AvatarWidget extends StatefulWidget {
 }
 
 class _AvatarWidgetState extends State<AvatarWidget> {
-  int selectedAvatar = 0;
+  late int selectedAvatar;
 
-  final PageController pageController = PageController(
-    viewportFraction: 0.35,
-  );
+  late final PageController pageController;
+
+  @override
+  void initState() {
+    selectedAvatar = AppConstants.avatarList.length ~/ 2;
+    pageController = PageController(
+      viewportFraction: 0.35,
+      initialPage: selectedAvatar,
+    );
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +68,7 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                   ),
                   child: Transform.scale(
                     scale: isSelected ? 1.2 : 0.8,
-                    child: Image.asset(
-                      AppConstants.avatarList[index].image,
-                    ),
+                    child: Image.asset(AppConstants.avatarList[index].image),
                   ),
                 ),
               );
