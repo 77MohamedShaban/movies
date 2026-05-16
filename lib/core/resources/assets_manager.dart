@@ -29,5 +29,7 @@ abstract final class AssetsManager {
   static const String searchIcon = "assets/images/search_icon.svg";
   static const String browseIcon = "assets/images/browse_icon.svg";
   static const String profileIcon = "assets/images/profile_icon.svg";
+  static const String availableNow = "assets/images/Available Now.png";
+  static const String watchNow = "assets/images/Watch Now.png";
 
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movies/core/resources/assets_manager.dart';
-import 'package:movies/core/resources/strings_Manager.dart';
 import 'package:movies/features/main_layout/browse/presentation/tab/browse_tab.dart';
 import 'package:movies/features/main_layout/home/presentation/tab/home_tab.dart';
 import 'package:movies/features/main_layout/profile/presentation/tab/profile_tab.dart';
