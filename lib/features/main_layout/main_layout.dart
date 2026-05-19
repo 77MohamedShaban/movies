@@ -16,8 +16,8 @@ class MainLayout extends StatefulWidget {
 
 class _MainLayoutState extends State<MainLayout> {
   int selectedTab = 0;
-  List<Widget> tabs = [
-    const HomeTab(),
+  late List<Widget> tabs = [
+    HomeTab(onClickSeeMore: changeTab),
     const SearchTab(),
     const BrowseTab(),
     const ProfileTab(),
@@ -90,5 +90,10 @@ class _MainLayoutState extends State<MainLayout> {
 
       body: tabs[selectedTab],
     );
+  }
+  void changeTab(int index) {
+    setState(() {
+      selectedTab = index;
+    });
   }
 }

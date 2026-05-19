@@ -44,5 +44,39 @@ abstract final class StringsManager {
   static String get verifyEmail => "Verify Email";
   static String get seeMore => "See More";
   static String get search => "Search";
+  //////////////////////// genre ////////////////////////////////////
+  static String get action => "Action";
+  static String get adventure => "Adventure";
+  static String get animation => "Animation";
+  static String get biography => "Biography";
+  static String get comedy => "Comedy";
+  static String get crime => "Crime";
+  static String get documentary => "Documentary";
+  static String get drama => "Drama";
+  static String get family => "Family";
+  static String get fantasy => "Fantasy";
+  static String get filmNoir => "Film-Noir";
+  static String get gameShow => "Game-Show";
+  static String get history => "History";
+  static String get horror => "Horror";
+  static String get music => "Music";
+  static String get musical => "Musical";
+  static String get mystery => "Mystery";
+  static String get news => "News";
+  static String get realityTV => "Reality-TV";
+  static String get romance => "Romance";
+  static String get sciFi => "Sci-Fi";
+  static String get short => "Short";
+  static String get sport => "Sport";
+  static String get talkShow => "Talk-Show";
+  static String get thriller => "Thriller";
+  static String get war => "War";
+  static String get western => "Western";
+  //////////////////////////////////////////////////////
+  static String get wishList => "Wish List";
+  static String get editProfile => "Edit Profile";
+  static String get exit => "Exit";
+  static String get logoutMessage => "Are you sure you want to logout?";
+  static String get cancel => "Cancel";
 
 }
