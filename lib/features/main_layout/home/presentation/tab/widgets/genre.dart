@@ -5,7 +5,8 @@ import 'package:movies/core/resources/strings_Manager.dart';
 import 'package:movies/core/reusable_component/movie_item.dart';
 
 class Genre extends StatelessWidget {
-  const Genre({super.key});
+  final Function(int) onClickSeeMore;
+  const Genre({super.key, required this.onClickSeeMore});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class Genre extends StatelessWidget {
             children: [
               Text("Action", style: Theme.of(context).textTheme.bodySmall),
               GestureDetector(
-                onTap: () {},
+                onTap: () =>  onClickSeeMore(2),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   spacing: 4.w,

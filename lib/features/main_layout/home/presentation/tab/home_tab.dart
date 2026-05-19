@@ -6,7 +6,8 @@ import 'package:movies/core/reusable_component/movie_item.dart';
 import 'package:movies/features/main_layout/home/presentation/tab/widgets/genre.dart';
 
 class HomeTab extends StatefulWidget {
-  const HomeTab({super.key});
+  final Function(int) onClickSeeMore;
+  const HomeTab({super.key, required this.onClickSeeMore});
 
   @override
   State<HomeTab> createState() => _HomeTabState();
@@ -122,7 +123,7 @@ class _HomeTabState extends State<HomeTab> {
                 ),
               ),
             ),
-            Genre(),
+            Genre(onClickSeeMore: widget.onClickSeeMore,),
           ],
         ),
       ),
