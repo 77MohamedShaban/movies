@@ -12,6 +12,7 @@ class MainBtn extends StatelessWidget {
   final double fontSize;
   final double? width;
   final bool exiteBtn;
+  final bool redBackgroundColor;
 
   const MainBtn({
     super.key,
@@ -20,7 +21,9 @@ class MainBtn extends StatelessWidget {
     this.isBorder = false,
     this.isGoogleBtn = false,
     this.fontSize = 20,
-    this.width, this.exiteBtn = false,
+    this.width,
+    this.exiteBtn = false,
+    this.redBackgroundColor = false,
   });
 
   @override
@@ -29,7 +32,9 @@ class MainBtn extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: isBorder
                 ? Theme.of(context).colorScheme.primary
-                : exiteBtn?Theme.of(context).colorScheme.error :Theme.of(context).colorScheme.onPrimaryContainer,
+                : exiteBtn || redBackgroundColor
+                ? Theme.of(context).colorScheme.error
+                : Theme.of(context).colorScheme.onPrimaryContainer,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.r),
               side: isBorder
@@ -52,7 +57,9 @@ class MainBtn extends StatelessWidget {
                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
                   color: isBorder
                       ? Theme.of(context).colorScheme.onPrimaryContainer
-                      : exiteBtn?Theme.of(context).colorScheme.onPrimary:Theme.of(context).colorScheme.primary,
+                      : exiteBtn
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Theme.of(context).colorScheme.primary,
                   fontSize: fontSize,
                 ),
                 textAlign: TextAlign.center,

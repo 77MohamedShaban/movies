@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../routes_manager/routes_name.dart';
+
 class MovieItem extends StatelessWidget {
   final String? image;
   final double? rate;
 
-  const MovieItem({super.key, required this.image, required this.rate});
+  const MovieItem({
+    super.key,
+    required this.image,
+    required this.rate,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(20.r),
       child: GestureDetector(
-        onTap: (){}
-        ,child: Container(
+        onTap: () {
+          Navigator.pushNamed(context, RoutesName.movieDetails);
+        },
+        child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(image?.toString() ?? ""),
@@ -25,10 +33,12 @@ class MovieItem extends StatelessWidget {
             child: Padding(
               padding: REdgeInsets.all(10),
               child: Container(
-       padding:  REdgeInsets.all(8),
+                padding: REdgeInsets.all(8),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.r),
-                  color: Theme.of(context).colorScheme.primary.withValues(alpha: .71),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.primary.withValues(alpha: .71),
                 ),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -36,9 +46,12 @@ class MovieItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("$rate", style: Theme.of(context).textTheme.labelSmall,),
+                    Text(
+                      "$rate",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
                     Icon(
-                      Icons.star,
+                      Icons.star_rate_rounded,
                       color: Theme.of(context).colorScheme.onPrimaryContainer,
                       size: 20,
                     ),

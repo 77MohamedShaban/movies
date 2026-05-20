@@ -9,7 +9,7 @@ abstract final class StringsManager {
   static String get onBoardingDes_2 => "Explore a vast collection of movies in all qualities and genres. Find your next favorite Movie with ease.";
   static String get onBoardingDes_3 => "Discover movies from every genre, in all available qualities. Find something new and exciting to watch every day.";
   static String get onBoardingDes_4 => "Save movies to your watchlist to keep track of what you want to watch next. Enjoy Movies in various qualities and genres.";
-  static String get onBoardingDes_5 => "Share your thoughts on the movies you've watched. Dive deep into Movie details and help others discover great movies with your reviews.";
+  static String get onBoardingDes_5 => "Share your thoughts on the movies you've watched. Dive deep into Movie movie_details and help others discover great movies with your reviews.";
   static String get exploreNow => "Explore Now";
   static String get next => "Next";
   static String get back => "Back";
@@ -78,5 +78,16 @@ abstract final class StringsManager {
   static String get exit => "Exit";
   static String get logoutMessage => "Are you sure you want to logout?";
   static String get cancel => "Cancel";
+  static String get watch => "Watch";
+  static String get screenShots => "Screen Shots";
+  static String get similar => "Similar";
+  static String get summary => "Summary";
+  static String get cast => "Cast";
+  static String get genres => "Genres";
+  static String get character => "Character";
+  static String get pickAvatar => "Pick Avatar";
+  static String get deleteAccount => "Delete Account";
+  static String get updateData => "Update Data";
+  static String get deleteAccountMessage => "Are you sure you want to delete your account?";
 
 }

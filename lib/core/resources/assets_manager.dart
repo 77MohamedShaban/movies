@@ -35,5 +35,7 @@ abstract final class AssetsManager {
   static const String exitIco = "assets/images/exit_icon.svg";
   static const String watchListIcon = "assets/images/watchList_icon.svg";
   static const String historyIcon = "assets/images/history_icon.svg";
+  static const String playVideoIcon = "assets/images/play_video_icon.png";
+  static const String defaultUserIcon = "assets/images/default_user_icon.svg";
 
 }

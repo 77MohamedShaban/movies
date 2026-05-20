@@ -4,6 +4,7 @@ import 'package:movies/core/resources/assets_manager.dart';
 import 'package:movies/core/resources/strings_Manager.dart';
 import 'package:movies/core/reusable_component/main_btn.dart';
 import 'package:movies/core/reusable_component/ui_utils.dart';
+import 'package:movies/core/routes_manager/routes_name.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -77,7 +78,9 @@ class Header extends StatelessWidget {
               Expanded(
                 child: MainBtn(
                   text: StringsManager.editProfile,
-                  onClick: () {},
+                  onClick: () {
+                    Navigator.pushNamed(context, RoutesName.updateProfile);
+                  },
                 ),
               ),
               MainBtn(
