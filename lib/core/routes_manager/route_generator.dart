@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:movies/core/resources/assets_manager.dart';
 import 'package:movies/core/routes_manager/routes_name.dart';
 import 'package:movies/features/auth/presentation/screens/forget_password/forget_password_screen.dart';
 import 'package:movies/features/auth/presentation/screens/log_in/log_in_screen.dart';
 import 'package:movies/features/intro/presentation/screens/on_boarding/on_boarding_screen.dart';
 import 'package:movies/features/main_layout/main_layout.dart';
+import 'package:movies/features/movie_details/presentation/screens/movie_details_screen.dart';
+import 'package:movies/features/update-profile/presentation/screens/update_profile_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import '../../features/auth/presentation/screens/sign_up/sign_up_screen.dart';
 
@@ -36,6 +37,16 @@ class RouteGenerator {
         return PageTransition(
           type: PageTransitionType.fade,
           child: MainLayout(),
+        );
+      case RoutesName.movieDetails:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: MovieDetailsScreen(),
+        );
+      case RoutesName.updateProfile:
+        return PageTransition(
+          type: PageTransitionType.fade,
+          child: UpdateProfileScreen(),
         );
       default:
         return unDefinedRoute();

@@ -13,4 +13,6 @@ abstract final class ColorsManager {
   static const Color gradientColor_4 = Color(0xff601321);
   static const Color gradientColor_5 = Color(0xff2A2C30);
 ////////////////////////////////////////////////////////////
+  static const Color gray = Color(0xffADADAD);
+
 }
