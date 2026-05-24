@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PrefsManager {
@@ -8,12 +7,11 @@ class PrefsManager {
     prefs = await SharedPreferences.getInstance();
   }
 
-
   static void buildOnBoarding(bool isBuilt) {
     prefs.setBool("buildOnBoarding", isBuilt);
   }
 
   static bool getBuildOnBoarding() {
-    return prefs.getBool("buildOnBoarding")??false;
+    return prefs.getBool("buildOnBoarding") ?? false;
   }
 }
