@@ -8,7 +8,7 @@ import 'package:movies/features/update-profile/presentation/screens/widgets/sele
 import '../../../../core/resources/app_validator.dart';
 import '../../../../core/resources/strings_Manager.dart';
 import '../../../../core/reusable_component/custom_field.dart';
-import '../../../auth/data/model/avatar_model.dart';
+import '../../../auth/data/model/sign_up_models/avatar_model.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({super.key});

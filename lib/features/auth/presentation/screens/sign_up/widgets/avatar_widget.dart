@@ -4,7 +4,8 @@ import 'package:movies/core/resources/app_constants.dart';
 import 'package:movies/core/resources/strings_Manager.dart';
 
 class AvatarWidget extends StatefulWidget {
-  const AvatarWidget({super.key});
+  final Function(String avatarId) onAvatarSelected;
+  const AvatarWidget({super.key, required this.onAvatarSelected});
 
   @override
   State<AvatarWidget> createState() => _AvatarWidgetState();
@@ -44,6 +45,9 @@ class _AvatarWidgetState extends State<AvatarWidget> {
               setState(() {
                 selectedAvatar = index;
               });
+              widget.onAvatarSelected(
+                AppConstants.avatarList[index].id,
+              );
             },
             itemBuilder: (context, index) {
               final isSelected = selectedAvatar == index;
@@ -59,6 +63,10 @@ class _AvatarWidgetState extends State<AvatarWidget> {
                   setState(() {
                     selectedAvatar = index;
                   });
+
+                  widget.onAvatarSelected(
+                    AppConstants.avatarList[index].id,
+                  );
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),

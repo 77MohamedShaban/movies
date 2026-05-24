@@ -89,5 +89,8 @@ abstract final class StringsManager {
   static String get deleteAccount => "Delete Account";
   static String get updateData => "Update Data";
   static String get deleteAccountMessage => "Are you sure you want to delete your account?";
+  static String get userCreatedSuccessfully => "User Created Successfully";
+  static String get logoutSuccess => "log out Successfully";
+  static String get   userLoggedSuccessfully => "User Logged Successfully";
 
 }

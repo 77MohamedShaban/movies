@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/resources/app_constants.dart';
-import '../../../../auth/data/model/avatar_model.dart';
+import '../../../../auth/data/model/sign_up_models/avatar_model.dart';
 
 abstract class SelectAvatar {
   static Future<AvatarModel?> selectAvatarBottomSheet(

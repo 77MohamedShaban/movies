@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:movies/core/di/di.dart';
 import 'package:movies/core/resources/assets_manager.dart';
 import 'package:movies/core/resources/strings_Manager.dart';
 import 'package:movies/core/reusable_component/main_btn.dart';
@@ -91,8 +94,24 @@ class Header extends StatelessWidget {
                     title: StringsManager.exit,
                     message: StringsManager.logoutMessage,
                     confirmText: StringsManager.exit,
-                    onConfirm: () {
+                    onConfirm: () async {
                       // TODO: Add logout logic here
+                     try{
+                       await getIt<FirebaseAuth>().signOut();
+                       await getIt<GoogleSignIn>().signOut();
+                       Navigator.pushNamedAndRemoveUntil(
+                         context,
+                         RoutesName.logIn,
+                             (route) => false,
+                       );
+                       UiUtils.showMessage(
+                         context,
+                         StringsManager.logoutSuccess,
+                         isError: false,
+                       );
+                     }catch(e){
+                       UiUtils.showMessage(context, e.toString());
+                     }
                     },
                   );
                 },

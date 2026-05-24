@@ -1,6 +1,6 @@
 import 'package:movies/core/resources/assets_manager.dart';
 import 'package:movies/core/resources/strings_Manager.dart';
-import 'package:movies/features/auth/data/model/avatar_model.dart';
+import 'package:movies/features/auth/data/model/sign_up_models/avatar_model.dart';
 import 'package:movies/features/main_layout/home/data/model/movie_model.dart';
 import 'package:movies/features/main_layout/profile/data/model/tab_bar_profile.dart';
 

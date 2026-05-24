@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:movies/core/resources/assets_manager.dart';
 
 class MainBtn extends StatelessWidget {
@@ -13,6 +14,7 @@ class MainBtn extends StatelessWidget {
   final double? width;
   final bool exiteBtn;
   final bool redBackgroundColor;
+  final bool isLoading;
 
   const MainBtn({
     super.key,
@@ -24,6 +26,7 @@ class MainBtn extends StatelessWidget {
     this.width,
     this.exiteBtn = false,
     this.redBackgroundColor = false,
+    this.isLoading = false,
   });
 
   @override
@@ -52,18 +55,24 @@ class MainBtn extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (isGoogleBtn) SvgPicture.asset(AssetsManager.iconGoogle),
-              Text(
-                text,
-                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                  color: isBorder
-                      ? Theme.of(context).colorScheme.onPrimaryContainer
-                      : exiteBtn
-                      ? Theme.of(context).colorScheme.onPrimary
-                      : Theme.of(context).colorScheme.primary,
-                  fontSize: fontSize,
+              if (isLoading)
+                LoadingAnimationWidget.fourRotatingDots(
+                  color: Theme.of(context).colorScheme.primary,
+                  size: 40.h,
                 ),
-                textAlign: TextAlign.center,
-              ),
+              if (!isLoading)
+                Text(
+                  text,
+                  style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                    color: isBorder
+                        ? Theme.of(context).colorScheme.onPrimaryContainer
+                        : exiteBtn
+                        ? Theme.of(context).colorScheme.onPrimary
+                        : Theme.of(context).colorScheme.primary,
+                    fontSize: fontSize,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               if (exiteBtn) SvgPicture.asset(AssetsManager.exitIcon),
             ],
           ),
