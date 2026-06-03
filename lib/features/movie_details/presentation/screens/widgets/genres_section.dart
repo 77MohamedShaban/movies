@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/resources/strings_Manager.dart';
 
 class GenresSection extends StatelessWidget {
-  const GenresSection({super.key});
+  final List<String> genres;
+  const GenresSection({super.key, required this.genres});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class GenresSection extends StatelessWidget {
             child: Wrap(
               spacing: 10.w,
               runSpacing: 10.h,
-              children: List.generate(5, (index) {
+              children: List.generate(genres.length, (index) {
                 return Container(
                   padding: REdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
@@ -34,7 +35,7 @@ class GenresSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16.r),
                   ),
                   child: Text(
-                    "Fantasy",
+                    genres[index],
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 );

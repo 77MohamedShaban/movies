@@ -177,7 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     );
                   },
                 ),
-                SizedBox(height: 24.h),
+                SizedBox(height: 40.h),
                 AuthNavigate(
                   logInNavigate: true,
                   onPressed: () {
@@ -186,7 +186,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   des: StringsManager.alreadyHaveAccount,
                   textBtn: StringsManager.login,
                 ),
-                SizedBox(height: 24.h),
+                SizedBox(height: 30.h),
                 LocalizationItem(),
                 SizedBox(height: 24.h),
               ],

@@ -10,3 +10,4 @@ class LogInError extends LogInState {
   final String message;
   LogInError(this.message);
 }
+class LogInGoogleLoading extends LogInState {}

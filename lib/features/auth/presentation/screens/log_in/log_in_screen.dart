@@ -133,17 +133,17 @@ class _LogInScreenState extends State<LogInScreen> {
                               }
                             },
                           ),
-                          SizedBox(height: 23.h),
+                          SizedBox(height: 40.h),
                           AuthNavigate(
                             onPressed: () {
                               Navigator.pushNamed(context, RoutesName.signUp);
                             },
                             des: StringsManager.alreadyHaveAccount,
-                            textBtn: StringsManager.login,
+                            textBtn: StringsManager.createOne,
                           ),
                           SizedBox(height: 25.h),
                           MainBtn(
-                            isLoading: state is LogInLoading,
+                            isLoading: state is LogInGoogleLoading,
                             fontSize: 16,
                             isGoogleBtn: true,
                             text: StringsManager.loginWithGoogle,
