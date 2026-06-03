@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/resources/app_constants.dart';
 import '../../../../../core/resources/strings_Manager.dart';
 import '../../../../../core/reusable_component/movie_item.dart';
+import '../../../data/model/similar_movies_response.dart';
 
 class SimilarSection extends StatelessWidget {
-  const SimilarSection({super.key});
+  final List<Movie?> movies;
+
+  const SimilarSection({super.key, required this.movies});
 
   @override
   Widget build(BuildContext context) {
@@ -31,10 +33,14 @@ class SimilarSection extends StatelessWidget {
             ),
             delegate: SliverChildBuilderDelegate(
               (context, index) => MovieItem(
-                image: AppConstants.dumiMovies[index].image,
-                rate: AppConstants.dumiMovies[index].rate,
+                id: movies[index]?.id ?? 0,
+                image: movies[index]?.mediumCoverImage ?? "",
+                title: movies[index]?.title ?? "",
+                rate: movies[index]?.rating.toString() ?? "",
+                year: movies[index]?.year.toString() ?? "",
+                url: movies[index]?.url ?? "",
               ),
-              childCount: AppConstants.dumiMovies.length,
+              childCount: movies.length,
             ),
           ),
         ),

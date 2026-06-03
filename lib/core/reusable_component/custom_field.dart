@@ -13,6 +13,7 @@ class CustomField extends StatefulWidget {
   final String? Function(String?)? validator;
   final bool isConfirmPassword;
   final bool isSearch;
+  final Function(String)? onSubmitted;
 
   const CustomField({
     super.key,
@@ -24,7 +25,7 @@ class CustomField extends StatefulWidget {
     this.isPassword = false,
     this.validator,
     this.isConfirmPassword = false,
-    this.isSearch = false,
+    this.isSearch = false, this.onSubmitted,
   });
 
   @override
@@ -50,6 +51,7 @@ class _CustomFieldState extends State<CustomField> {
       enableSuggestions: !widget.isPassword,
       controller: widget.controller,
       onTapUpOutside: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+      onFieldSubmitted: widget.onSubmitted,
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
       obscureText: isShowPassword,

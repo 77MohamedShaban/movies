@@ -41,12 +41,14 @@ class RouteGenerator {
       case RoutesName.movieDetails:
         return PageTransition(
           type: PageTransitionType.fade,
-          child: MovieDetailsScreen(),
+          child: const MovieDetailsScreen(),
+          settings: settings,
         );
       case RoutesName.updateProfile:
         return PageTransition(
           type: PageTransitionType.fade,
-          child: UpdateProfileScreen(),
+          child: const UpdateProfileScreen(),
+          settings: settings,
         );
       default:
         return unDefinedRoute();

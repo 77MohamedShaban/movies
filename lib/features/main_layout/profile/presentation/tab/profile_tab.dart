@@ -86,10 +86,13 @@ class ProfileTab extends StatelessWidget {
                   ),
 
                   itemBuilder: (context, index) {
-                    return MovieItem(
-                      image: AppConstants.dumiMovies[index].image,
-                      rate: AppConstants.dumiMovies[index].rate,
-                    );
+                    return Container()
+
+                    //   MovieItem(
+                    //   image: AppConstants.dumiMovies[index].image,
+                    //   rate: AppConstants.dumiMovies[index].rate,
+                    // )
+                    ;
                   },
                 ),
               );

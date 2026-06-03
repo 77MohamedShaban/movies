@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EvaluationSection extends StatelessWidget {
-  const EvaluationSection({super.key});
+ final String rating;
+ final String votes;
+ final String runtime;
+
+  const EvaluationSection({super.key, required this.rating,required this.votes, required this.runtime});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class EvaluationSection extends StatelessWidget {
                 size: 30,
               ),
               Text(
-                "20",
+                votes,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
@@ -60,7 +64,7 @@ class EvaluationSection extends StatelessWidget {
                 ),
               ),
               Text(
-                "20",
+                runtime,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
@@ -87,7 +91,7 @@ class EvaluationSection extends StatelessWidget {
                 size: 30,
               ),
               Text(
-                "20",
+                rating,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],

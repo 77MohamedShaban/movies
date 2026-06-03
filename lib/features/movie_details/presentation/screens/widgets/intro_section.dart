@@ -4,7 +4,16 @@ import '../../../../../core/resources/assets_manager.dart';
 import '../../../../../core/resources/colors_manager.dart';
 
 class IntroSection extends StatefulWidget {
-  const IntroSection({super.key});
+  String image;
+  String title;
+  String date;
+
+  IntroSection({
+    required this.image,
+    required this.title,
+    required this.date,
+    super.key,
+  });
 
   @override
   State<IntroSection> createState() => _IntroDetailsState();
@@ -12,23 +21,24 @@ class IntroSection extends StatefulWidget {
 
 class _IntroDetailsState extends State<IntroSection> {
   bool watchList = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(AssetsManager.onBoarding_3),
-          fit: BoxFit.cover,
-        ),
+        image: widget.image != ''
+            ? DecorationImage(
+                image: NetworkImage(widget.image),
+                fit: BoxFit.cover,
+              )
+            : null,
       ),
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Theme.of(
-                context,
-              ).colorScheme.primary.withValues(alpha: 0.2),
+              Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
               Theme.of(context).colorScheme.primary,
             ],
             stops: const [0, 1],
@@ -50,9 +60,7 @@ class _IntroDetailsState extends State<IntroSection> {
                     },
                     child: Icon(
                       Icons.arrow_back_ios_rounded,
-                      color: Theme.of(
-                        context,
-                      ).colorScheme.onPrimary,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                   GestureDetector(
@@ -63,31 +71,25 @@ class _IntroDetailsState extends State<IntroSection> {
                     },
                     child: Icon(
                       Icons.bookmark,
-                      color: watchList?Theme.of(
-                        context,
-                      ).colorScheme.onPrimaryContainer:Theme.of(
-                        context,
-                      ).colorScheme.onPrimary,
+                      color: watchList
+                          ? Theme.of(context).colorScheme.onPrimaryContainer
+                          : Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ],
               ),
-              Image.asset(
-                AssetsManager.playVideoIcon,
-                height: 97.h,
-              ),
+              Image.asset(AssetsManager.playVideoIcon, height: 97.h),
               Column(
                 children: [
                   Text(
-                    "Doctor Strange in the Multiverse of Madness",
+                    widget.title,
                     style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
+                    textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16.h),
                   Text(
-                    "2022",
-                    style: Theme.of(context).textTheme.bodySmall
-                        ?.copyWith(
+                    widget.date,
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.w700,
                       color: ColorsManager.gray,
                     ),
