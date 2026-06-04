@@ -1,6 +1,6 @@
 # Movies App 🎬
 
-**Movies Hub** is a premium cinematic discovery platform designed to provide movie enthusiasts with a seamless and immersive experience. The primary goal of the application is to bridge the gap between viewers and the vast world of cinema by offering on-demand access to trending data, high-definition visual previews, and personalized movie management. It serves as a reliable companion for discovering and tracking your cinematic journey in a secure and highly responsive environment.
+Movies App is a Flutter-based movie discovery application that allows users to explore trending, popular, and upcoming movies, view detailed information, and manage a personalized watch experience. The app is built using Clean Architecture and follows scalable state management practices to ensure performance, maintainability, and modularity.
 
 ## 🌟 Impact
 
