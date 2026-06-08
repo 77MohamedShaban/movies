@@ -81,11 +81,92 @@ lib/
    flutter run
    ```
 
-## 🎨 Screenshots 
+## 📸 Screenshots
 
-| Splash | Home | Search | Movie Details |
-| :---: | :---: | :---: | :---: |
-| *(Image)* | *(Image)* | *(Image)* | *(Image)* |
+<div align="center">
+   <h3>Onboarding & Splash</h3>
+   <table style="width:100%">
+    <tr>
+      <td>
+        <img width="200" alt="splash_screen" src="https://github.com/user-attachments/assets/ab300372-32dc-4534-8e8e-243f51674d32" />
+      </td>
+       <td>
+ <img width="200" alt="onBoarding_1" src="https://github.com/user-attachments/assets/53797330-7e60-4814-ad64-03a190a6a21b" />
+      </td>
+       <td>
+     <img width="200" alt="onBoarding_2" src="https://github.com/user-attachments/assets/2533dd5e-0f9c-4075-a05d-13e283550f2b" />
+      </td>
+       <td>
+   
+<img width="200"  alt="onBoarding_3" src="https://github.com/user-attachments/assets/375436b3-8f37-4837-9276-7abadf5ec103" />
+      </td>
+       <td>
+ <img width="200" alt="onBoarding_4" src="https://github.com/user-attachments/assets/283c10e5-9d15-416e-9725-c9414f67e5bd" />
+      </td>
+       <td>
+<img width="200" alt="onBoarding_5" src="https://github.com/user-attachments/assets/a6f06c00-1456-4168-8723-91ba4865bf39" />
+      </td>
+       <td>
+
+<img width="200" alt="onBoarding_6" src="https://github.com/user-attachments/assets/16e2a3a6-3dd8-4302-bd42-ab06dc1f2703" />
+      </td>  
+    </tr>
+  </table>
+
+<h3>Main App Features</h3>
+   <table style="width:100%">
+       <tr>
+       <td>
+           <img width="200" alt="sign_up" src="https://github.com/user-attachments/assets/460a1294-4495-42e1-b92e-9752d8285523" />
+       </td>
+       <td>
+<img width="200" alt="login" src="https://github.com/user-attachments/assets/171933cb-0718-4311-993a-1867b340ac91" />
+       </td>
+       <td>
+<img width="200" alt="forget" src="https://github.com/user-attachments/assets/58f3d794-2a83-4783-8f18-f22cb5e5f2a4" />
+       </td>
+       <td>
+<img width="200" alt="home_tab" src="https://github.com/user-attachments/assets/117baf20-8ac4-4d65-af20-f6444c33935d" />
+       </td>
+       <td>
+<img width="200" alt="search_tab" src="https://github.com/user-attachments/assets/0f1de353-0086-49b0-895b-854b0ed33e8e" />  
+       </td>
+       </tr>
+         <tr>
+       <td>
+<img width="200" alt="browse_tab" src="https://github.com/user-attachments/assets/609673d7-e6cf-4a24-9633-bc2dfe2021c5" />
+       </td>
+       <td>
+<img width="200" alt="profile_tab" src="https://github.com/user-attachments/assets/a530e04f-cfeb-4d2d-91d1-937b5b84ce5d" />
+       </td>
+       <td>
+<img width="200" alt="update" src="https://github.com/user-attachments/assets/f6aaa8d8-53f2-4bd1-97f6-bd0a91717521" />
+       </td>
+       <td>
+<img width="200" alt="delete_account" src="https://github.com/user-attachments/assets/434c0dc9-b034-4fcc-9152-1105baf6e6ac" />  
+       </td>
+       <td>
+<img width="200" alt="exit" src="https://github.com/user-attachments/assets/a9ba4ce2-18f6-4abc-8f70-84adddb15a79" />
+       </td>
+       </tr>
+         <tr>
+       <td>
+<img width="200" alt="Screenshot_20260608_195937" src="https://github.com/user-attachments/assets/5be2756b-01f8-4fa5-ab7f-520fbcd4b390" />
+       </td>
+       <td>
+<img width="200" alt="Screenshot_20260608_200013" src="https://github.com/user-attachments/assets/7af2a8df-03ed-4aff-842c-4b7f90462a40" /> 
+       </td>
+       <td>
+<img width="200" alt="Screenshot_20260608_200029" src="https://github.com/user-attachments/assets/f62d4205-0f81-43c1-b1d8-e9ab970abe3d" />
+       </td>
+       <td>
+<img width="200" alt="Screenshot_20260608_200048" src="https://github.com/user-attachments/assets/30a43976-37fb-4027-b539-211e84ade8d3" />
+       </td>
+       </tr>
+
+
+  </table>
+</div>
 
 ---
 **Maintained by MOHAMED SHABAN**
