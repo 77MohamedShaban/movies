@@ -6,9 +6,9 @@ import '../../../../auth/data/model/sign_up_models/avatar_model.dart';
 
 abstract class SelectAvatar {
   static Future<AvatarModel?> selectAvatarBottomSheet(
-    BuildContext context,
-    String selected,
-  ) {
+      BuildContext context,
+      String selectedAvatarId,
+      ) {
     return showModalBottomSheet<AvatarModel>(
       context: context,
       backgroundColor: Colors.transparent,
@@ -33,24 +33,30 @@ abstract class SelectAvatar {
                   childAspectRatio: 1,
                 ),
                 itemBuilder: (context, index) {
+                  final avatar = AppConstants.avatarList[index];
+
+                  final isSelected = selectedAvatarId == avatar.id;
+
                   return GestureDetector(
                     onTap: () {
-                      Navigator.pop(context, AppConstants.avatarList[index]);
+                      Navigator.pop(context, avatar);
                     },
                     child: Container(
                       padding: REdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: selected == AppConstants.avatarList[index].id
-                            ? Theme.of(context).colorScheme.onPrimaryContainer.withValues(alpha: .56)
+                        color: isSelected
+                            ? Theme.of(context)
+                            .colorScheme
+                            .onPrimaryContainer
+                            .withValues(alpha: .56)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(16.r),
                         border: Border.all(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onPrimaryContainer,
+                          color:
+                          Theme.of(context).colorScheme.onPrimaryContainer,
                         ),
                       ),
-                      child: Image.asset(AppConstants.avatarList[index].image),
+                      child: Image.asset(avatar.image),
                     ),
                   );
                 },

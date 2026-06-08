@@ -58,6 +58,18 @@ import '../../features/main_layout/home/domain/use_case/get_movies_use_case.dart
     as _i564;
 import '../../features/main_layout/home/presentation/view_models/home_cubit.dart'
     as _i96;
+import '../../features/main_layout/profile/data/data_source/profile_dao.dart'
+    as _i266;
+import '../../features/main_layout/profile/data/data_source_impl/profile_dao_impl.dart'
+    as _i618;
+import '../../features/main_layout/profile/data/repo_impl/profile_repo_impl.dart'
+    as _i807;
+import '../../features/main_layout/profile/domain/repo/profile_repo.dart'
+    as _i656;
+import '../../features/main_layout/profile/domain/use_case/get_user_data_use_case.dart'
+    as _i201;
+import '../../features/main_layout/profile/presentation/view_models/profile_cubit.dart'
+    as _i526;
 import '../../features/main_layout/search/data/api/search_client.dart' as _i723;
 import '../../features/main_layout/search/data/data_source/search_dao.dart'
     as _i9;
@@ -87,6 +99,20 @@ import '../../features/movie_details/domain/use_case/get_similar_movies_use_case
     as _i1064;
 import '../../features/movie_details/presentation/view_models/movie_details_cubit.dart'
     as _i894;
+import '../../features/update-profile/data/data_source/update_profile_dao.dart'
+    as _i114;
+import '../../features/update-profile/data/data_source_impl/update_profile_dao_impl.dart'
+    as _i79;
+import '../../features/update-profile/data/repo_impl/update_profile_repo_impl.dart'
+    as _i709;
+import '../../features/update-profile/domain/repo/update_profile_repo.dart'
+    as _i971;
+import '../../features/update-profile/domain/use_case/delete_user_account_use_case.dart'
+    as _i642;
+import '../../features/update-profile/domain/use_case/update_user_data_use_case.dart'
+    as _i627;
+import '../../features/update-profile/presentation/view_models/update_profile_cubit.dart'
+    as _i174;
 import 'injectable_module.dart' as _i109;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -115,8 +141,17 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i1.HomeDao>(() => _i551.HomeDaoImpl(gh<_i687.HomeClient>()));
+    gh.factory<_i114.UpdateProfileDao>(
+      () => _i79.UpdateProfileDaoImpl(gh<_i974.FirebaseFirestore>()),
+    );
+    gh.factory<_i266.ProfileDao>(
+      () => _i618.ProfileDaoImpl(gh<_i974.FirebaseFirestore>()),
+    );
     gh.factory<_i11.MovieDetailsDao>(
       () => _i1047.MovieDetailsDaoImpl(gh<_i1048.MovieDetailsClient>()),
+    );
+    gh.factory<_i971.UpdateProfileRepo>(
+      () => _i709.UpdateProfileRepoImpl(gh<_i114.UpdateProfileDao>()),
     );
     gh.factory<_i170.AuthRepo>(
       () => _i279.AuthRepositoryImpl(gh<_i718.AuthRemoteDao>()),
@@ -133,6 +168,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i426.SignUpUseCase>(
       () => _i426.SignUpUseCase(gh<_i170.AuthRepo>()),
     );
+    gh.factory<_i656.ProfileRepo>(
+      () => _i807.ProfileRepoImpl(gh<_i266.ProfileDao>()),
+    );
     gh.factory<_i741.HomeRepo>(() => _i263.HomeRepoImpl(gh<_i1.HomeDao>()));
     gh.factory<_i397.BrowseDao>(
       () => _i341.BrowseDaoImpl(gh<_i421.BrowseClient>()),
@@ -148,6 +186,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i350.SearchMovieUseCase>(
       () => _i350.SearchMovieUseCase(gh<_i801.SearchRepo>()),
+    );
+    gh.factory<_i201.GetUserDataUseCase>(
+      () => _i201.GetUserDataUseCase(gh<_i656.ProfileRepo>()),
+    );
+    gh.factory<_i642.DeleteUserAccountUseCase>(
+      () => _i642.DeleteUserAccountUseCase(gh<_i971.UpdateProfileRepo>()),
+    );
+    gh.factory<_i627.UpdateUserDataUseCase>(
+      () => _i627.UpdateUserDataUseCase(gh<_i971.UpdateProfileRepo>()),
     );
     gh.factory<_i508.GetByGenreUseCase>(
       () => _i508.GetByGenreUseCase(gh<_i741.HomeRepo>()),
@@ -176,6 +223,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i330.SignUpCubit>(
       () => _i330.SignUpCubit(gh<_i426.SignUpUseCase>()),
     );
+    gh.factory<_i174.UpdateProfileCubit>(
+      () => _i174.UpdateProfileCubit(
+        gh<_i627.UpdateUserDataUseCase>(),
+        gh<_i642.DeleteUserAccountUseCase>(),
+      ),
+    );
     gh.factory<_i838.BrowseRepo>(
       () => _i38.BrowseRepoImpl(gh<_i397.BrowseDao>()),
     );
@@ -184,6 +237,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i1064.GetSimilarMoviesUseCase>(
       () => _i1064.GetSimilarMoviesUseCase(gh<_i293.MovieDetailsRepo>()),
+    );
+    gh.factory<_i526.ProfileCubit>(
+      () => _i526.ProfileCubit(
+        gh<_i201.GetUserDataUseCase>(),
+        gh<_i59.FirebaseAuth>(),
+      ),
     );
     gh.factory<_i928.GetByGenreUseCase>(
       () => _i928.GetByGenreUseCase(gh<_i838.BrowseRepo>()),
@@ -197,6 +256,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i673.BrowseCubit>(
       () => _i673.BrowseCubit(gh<_i928.GetByGenreUseCase>()),
     );
+
     return this;
   }
 }

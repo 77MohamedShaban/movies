@@ -39,13 +39,14 @@ class ScreenShotsSection extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl: images[index],
                       fit: BoxFit.cover,
-                      placeholder: (context, url) =>
-                          LoadingAnimationWidget.fourRotatingDots(
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onPrimaryContainer,
-                            size: 30.h,
-                          ),
+                      placeholder: (context, url) => Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onPrimaryContainer,
+                          size: 30.sp,
+                        ),
+                      ),
                       errorWidget: (context, url, error) => Center(
                         child: Icon(
                           Icons.error,

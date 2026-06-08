@@ -7,6 +7,7 @@ import 'package:movies/core/resources/assets_manager.dart';
 import 'package:movies/features/main_layout/browse/presentation/tab/browse_tab.dart';
 import 'package:movies/features/main_layout/home/presentation/tab/home_tab.dart';
 import 'package:movies/features/main_layout/profile/presentation/tab/profile_tab.dart';
+import 'package:movies/features/main_layout/profile/presentation/view_models/profile_cubit.dart';
 import 'package:movies/features/main_layout/search/presentation/tab/search_tab.dart';
 import 'package:movies/features/main_layout/search/presentation/view_models/search_cubit.dart';
 
@@ -33,7 +34,9 @@ class _MainLayoutState extends State<MainLayout> {
       child: const SearchTab(),
     ),
     const BrowseTab(),
-    const ProfileTab(),
+    BlocProvider(
+        create: (context) => getIt<ProfileCubit>(),
+        child: const ProfileTab()),
   ];
 
   @override

@@ -52,11 +52,11 @@ class CastSection extends StatelessWidget {
                               imageUrl: cast[index].urlSmallImage ?? "",
                               fit: BoxFit.cover,
                               placeholder: (context, url) =>
-                                  LoadingAnimationWidget.fourRotatingDots(
-                                    color: Theme.of(
-                                      context,
-                                    ).colorScheme.onPrimaryContainer,
-                                    size: 15.h,
+                                  Center(
+                                    child: LoadingAnimationWidget.staggeredDotsWave(
+                                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                      size: 30.sp,
+                                    ),
                                   ),
                               errorWidget: (context, url, error) => Center(
                                 child: Icon(

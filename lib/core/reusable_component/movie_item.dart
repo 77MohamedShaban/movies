@@ -13,19 +13,41 @@ class MovieItem extends StatelessWidget {
   final String? rate;
   final String? url;
 
-  const MovieItem({super.key,required this.image,required this.title,required this.year,required this.rate,required this.id,required this.url});
+  const MovieItem({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.year,
+    required this.rate,
+    required this.id,
+    required this.url,
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, RoutesName.movieDetails, arguments: Movie(image: image,rating: rate,title: title,year: year, id: id, url: url));
+        Navigator.pushNamed(
+          context,
+          RoutesName.movieDetails,
+          arguments: Movie(
+            image: image,
+            rating: rate,
+            title: title,
+            year: year,
+            id: id,
+            url: url,
+          ),
+        );
       },
       child: CachedNetworkImage(
         imageUrl: image ?? "",
-        placeholder: (context, url) => LoadingAnimationWidget.fourRotatingDots(
-          color: Theme.of(context).colorScheme.onPrimaryContainer,
-          size: 60.h,
+        placeholder: (context, url) => Center(
+          child: LoadingAnimationWidget.flickr(
+            size: 30.sp,
+            leftDotColor: Theme.of(context).colorScheme.onPrimary,
+            rightDotColor: Theme.of(context).colorScheme.onPrimaryContainer,
+          ),
         ),
         errorWidget: (context, url, error) => Center(
           child: Icon(Icons.error, size: 40.sp, color: Colors.red),

@@ -24,4 +24,5 @@ abstract class InjectableModule {
 
   @lazySingleton
   GoogleSignIn get googleSignIn => GoogleSignIn();
+
 }
