@@ -58,16 +58,32 @@ import '../../features/main_layout/home/domain/use_case/get_movies_use_case.dart
     as _i564;
 import '../../features/main_layout/home/presentation/view_models/home_cubit.dart'
     as _i96;
+import '../../features/main_layout/profile/data/data_source/history_dao.dart'
+    as _i946;
 import '../../features/main_layout/profile/data/data_source/profile_dao.dart'
     as _i266;
+import '../../features/main_layout/profile/data/data_source/watchlist_dao.dart'
+    as _i641;
 import '../../features/main_layout/profile/data/data_source_impl/profile_dao_impl.dart'
     as _i618;
+import '../../features/main_layout/profile/data/repo_impl/history_repo_impl.dart'
+    as _i256;
 import '../../features/main_layout/profile/data/repo_impl/profile_repo_impl.dart'
     as _i807;
+import '../../features/main_layout/profile/data/repo_impl/watchlist_repo_impl.dart'
+    as _i100;
+import '../../features/main_layout/profile/domain/repo/history_repo.dart'
+    as _i497;
 import '../../features/main_layout/profile/domain/repo/profile_repo.dart'
     as _i656;
+import '../../features/main_layout/profile/domain/repo/watchlist_repo.dart'
+    as _i406;
 import '../../features/main_layout/profile/domain/use_case/get_user_data_use_case.dart'
     as _i201;
+import '../../features/main_layout/profile/domain/use_case/history_use_cases.dart'
+    as _i301;
+import '../../features/main_layout/profile/domain/use_case/watchlist_use_cases.dart'
+    as _i369;
 import '../../features/main_layout/profile/presentation/view_models/profile_cubit.dart'
     as _i526;
 import '../../features/main_layout/search/data/api/search_client.dart' as _i723;
@@ -141,11 +157,29 @@ extension GetItInjectableX on _i174.GetIt {
       ),
     );
     gh.factory<_i1.HomeDao>(() => _i551.HomeDaoImpl(gh<_i687.HomeClient>()));
+    gh.factory<_i946.HistoryDao>(
+      () => _i946.HistoryDaoImpl(
+        gh<_i974.FirebaseFirestore>(),
+        gh<_i59.FirebaseAuth>(),
+      ),
+    );
     gh.factory<_i114.UpdateProfileDao>(
       () => _i79.UpdateProfileDaoImpl(gh<_i974.FirebaseFirestore>()),
     );
+    gh.factory<_i641.WatchlistDao>(
+      () => _i641.WatchlistDaoImpl(
+        gh<_i974.FirebaseFirestore>(),
+        gh<_i59.FirebaseAuth>(),
+      ),
+    );
     gh.factory<_i266.ProfileDao>(
       () => _i618.ProfileDaoImpl(gh<_i974.FirebaseFirestore>()),
+    );
+    gh.factory<_i497.HistoryRepo>(
+      () => _i256.HistoryRepoImpl(
+        gh<_i946.HistoryDao>(),
+        gh<_i1048.MovieDetailsClient>(),
+      ),
     );
     gh.factory<_i11.MovieDetailsDao>(
       () => _i1047.MovieDetailsDaoImpl(gh<_i1048.MovieDetailsClient>()),
@@ -214,11 +248,35 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i69.SignInWithGoogleUseCase>(),
       ),
     );
+    gh.factory<_i301.AddToHistoryUseCase>(
+      () => _i301.AddToHistoryUseCase(gh<_i497.HistoryRepo>()),
+    );
+    gh.factory<_i301.GetHistoryMoviesUseCase>(
+      () => _i301.GetHistoryMoviesUseCase(gh<_i497.HistoryRepo>()),
+    );
+    gh.factory<_i406.WatchlistRepo>(
+      () => _i100.WatchlistRepoImpl(
+        gh<_i641.WatchlistDao>(),
+        gh<_i1048.MovieDetailsClient>(),
+      ),
+    );
     gh.factory<_i991.SearchCubit>(
       () => _i991.SearchCubit(gh<_i350.SearchMovieUseCase>()),
     );
     gh.factory<_i329.ForgetCubit>(
       () => _i329.ForgetCubit(gh<_i559.ForgetUseCase>()),
+    );
+    gh.factory<_i369.AddToWatchlistUseCase>(
+      () => _i369.AddToWatchlistUseCase(gh<_i406.WatchlistRepo>()),
+    );
+    gh.factory<_i369.RemoveFromWatchlistUseCase>(
+      () => _i369.RemoveFromWatchlistUseCase(gh<_i406.WatchlistRepo>()),
+    );
+    gh.factory<_i369.GetWatchlistMoviesUseCase>(
+      () => _i369.GetWatchlistMoviesUseCase(gh<_i406.WatchlistRepo>()),
+    );
+    gh.factory<_i369.IsWatchlistedUseCase>(
+      () => _i369.IsWatchlistedUseCase(gh<_i406.WatchlistRepo>()),
     );
     gh.factory<_i330.SignUpCubit>(
       () => _i330.SignUpCubit(gh<_i426.SignUpUseCase>()),
@@ -232,17 +290,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i838.BrowseRepo>(
       () => _i38.BrowseRepoImpl(gh<_i397.BrowseDao>()),
     );
+    gh.factory<_i526.ProfileCubit>(
+      () => _i526.ProfileCubit(
+        gh<_i201.GetUserDataUseCase>(),
+        gh<_i369.GetWatchlistMoviesUseCase>(),
+        gh<_i301.GetHistoryMoviesUseCase>(),
+        gh<_i59.FirebaseAuth>(),
+      ),
+    );
     gh.factory<_i448.GetMovieDetailsUseCase>(
       () => _i448.GetMovieDetailsUseCase(gh<_i293.MovieDetailsRepo>()),
     );
     gh.factory<_i1064.GetSimilarMoviesUseCase>(
       () => _i1064.GetSimilarMoviesUseCase(gh<_i293.MovieDetailsRepo>()),
-    );
-    gh.factory<_i526.ProfileCubit>(
-      () => _i526.ProfileCubit(
-        gh<_i201.GetUserDataUseCase>(),
-        gh<_i59.FirebaseAuth>(),
-      ),
     );
     gh.factory<_i928.GetByGenreUseCase>(
       () => _i928.GetByGenreUseCase(gh<_i838.BrowseRepo>()),
@@ -251,12 +311,15 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i894.MovieDetailsCubit(
         gh<_i448.GetMovieDetailsUseCase>(),
         gh<_i1064.GetSimilarMoviesUseCase>(),
+        gh<_i369.AddToWatchlistUseCase>(),
+        gh<_i369.RemoveFromWatchlistUseCase>(),
+        gh<_i369.IsWatchlistedUseCase>(),
+        gh<_i301.AddToHistoryUseCase>(),
       ),
     );
     gh.factory<_i673.BrowseCubit>(
       () => _i673.BrowseCubit(gh<_i928.GetByGenreUseCase>()),
     );
-
     return this;
   }
 }

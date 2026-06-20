@@ -34,176 +34,115 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (movie == null) return const Scaffold(body: Center(child: Text("No Movie Data")));
+
     return SafeArea(
       child: BlocProvider(
         create: (context) =>
             getIt<MovieDetailsCubit>()..getMovieDetails(movie!.id!, true, true),
         child: Scaffold(
-          body: CustomScrollView(
-            slivers: [
-              // Intro
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 645.h,
-                  child: IntroSection(
-                    image: movie?.image ?? '',
-                    title: movie?.title ?? '',
-                    date: movie?.year.toString() ?? '',
+          body: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
+            builder: (context, state) {
+              return CustomScrollView(
+                slivers: [
+                  // Intro Section
+                  SliverToBoxAdapter(
+                    child: SizedBox(
+                      height: 645.h,
+                      child: IntroSection(
+                        image: movie?.image ?? '',
+                        title: movie?.title ?? '',
+                        date: movie?.year.toString() ?? '',
+                        movieId: movie!.id!,
+                      ),
+                    ),
                   ),
-                ),
-              ),
 
-              // Watch Button
-              SliverPadding(
-                padding: REdgeInsets.only(right: 16, left: 16, top: 16),
-                sliver: SliverToBoxAdapter(
-                  child: MainBtn(
-                    text: StringsManager.watch,
-                    onClick: () async{
-                      final Uri url = Uri.parse(movie?.url ?? "");
-                      await launchUrl(url,mode: LaunchMode.inAppBrowserView);
-                    },
-                    redBackgroundColor: true,
+                  // Watch Button
+                  SliverPadding(
+                    padding: REdgeInsets.only(right: 16, left: 16, top: 16),
+                    sliver: SliverToBoxAdapter(
+                      child: MainBtn(
+                        text: StringsManager.watch,
+                        onClick: () async {
+                          // إضافة الفيلم للسجل (History) في Firebase
+                          context.read<MovieDetailsCubit>().addToHistory(movie!.id!);
+
+                          final Uri url = Uri.parse(movie?.url ?? "");
+                          await launchUrl(url, mode: LaunchMode.inAppBrowserView);
+                        },
+                        redBackgroundColor: true,
+                      ),
+                    ),
                   ),
-                ),
-              ),
 
-              BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
-                buildWhen: (previous, current) =>
-                    current is MovieDetailsSuccess ||
-                    current is MovieDetailsFailure ||
-                    current is MovieDetailsLoading,
-                builder: (context, state) {
-                  if (state is MovieDetailsLoading) {
-                    return SliverToBoxAdapter(
+                  // Movie Details Body
+                  if (state.detailsStatus == MovieDetailsStatus.loading)
+                    SliverToBoxAdapter(
                       child: Center(
                         child: LoadingAnimationWidget.fourRotatingDots(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onPrimaryContainer,
+                          color: Theme.of(context).colorScheme.onPrimaryContainer,
                           size: 60.h,
                         ),
                       ),
-                    );
-                  } else if (state is MovieDetailsSuccess) {
-                    return SliverMainAxisGroup(
+                    )
+                  else if (state.detailsStatus == MovieDetailsStatus.success && state.movieDetails != null)
+                    SliverMainAxisGroup(
                       slivers: [
-                        // Evaluation
                         SliverPadding(
-                          padding: REdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 16,
-                          ),
+                          padding: REdgeInsets.symmetric(horizontal: 16, vertical: 16),
                           sliver: SliverToBoxAdapter(
                             child: EvaluationSection(
-                              rating:
-                                  state.movieDetails.movie?.rating.toString() ??
-                                  "",
-                              runtime:
-                                  state.movieDetails.movie?.runtime
-                                      .toString() ??
-                                  "",
-                              votes:
-                                  state.movieDetails.movie?.likeCount
-                                      .toString() ??
-                                  "",
+                              rating: state.movieDetails!.movie?.rating.toString() ?? "",
+                              runtime: state.movieDetails!.movie?.runtime.toString() ?? "",
+                              votes: state.movieDetails!.movie?.likeCount.toString() ?? "",
                             ),
                           ),
                         ),
 
                         ScreenShotsSection(
                           images: [
-                            state.movieDetails.movie?.largeScreenshotImage1 ??
-                                "",
-                            state.movieDetails.movie?.largeScreenshotImage2 ??
-                                "",
-                            state.movieDetails.movie?.largeScreenshotImage3 ??
-                                "",
+                            state.movieDetails!.movie?.largeScreenshotImage1 ?? "",
+                            state.movieDetails!.movie?.largeScreenshotImage2 ?? "",
+                            state.movieDetails!.movie?.largeScreenshotImage3 ?? "",
                           ],
                         ),
-                        BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
-                          buildWhen: (previous, current) =>
-                              current is SimilarMoviesSuccess ||
-                              current is SimilarMoviesFailure ||
-                              current is SimilarMoviesLoading,
-                          builder: (context, state) {
-                            if (state is SimilarMoviesLoading) {
-                              return SliverToBoxAdapter(
-                                child: Center(
-                                  child:
-                                      LoadingAnimationWidget.fourRotatingDots(
-                                        color: Theme.of(
-                                          context,
-                                        ).colorScheme.onPrimaryContainer,
-                                        size: 60.h,
-                                      ),
-                                ),
-                              );
-                            } else if (state is SimilarMoviesSuccess) {
-                              return SimilarSection( movies: state.similarMovies.movies,);
-                            } else if (state is SimilarMoviesFailure) {
-                              return SliverToBoxAdapter(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  spacing: 16.h,
-                                  children: [
-                                    SizedBox(height: 20.h),
-                                    Text(
-                                      state.message,
-                                      style: Theme.of(
-                                        context,
-                                      ).textTheme.bodySmall,
-                                    ),
-                                    Icon(
-                                      Icons.error,
-                                      color: Theme.of(
-                                        context,
-                                      ).colorScheme.error,
-                                      size: 50.h,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                            return Container();
-                          },
-                        ),
-                        SummarySection(
-                          summary:
-                              state.movieDetails.movie?.descriptionFull ?? "",
-                        ),
-                        CastSection(cast: state.movieDetails.movie?.cast ?? []),
-                        GenresSection(
-                          genres: state.movieDetails.movie?.genres ?? [],
-                        ),
+
+                        // Similar Movies Section
+                        if (state.similarStatus == SimilarMoviesStatus.loading)
+                          SliverToBoxAdapter(
+                            child: Center(
+                              child: LoadingAnimationWidget.fourRotatingDots(
+                                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                size: 60.h,
+                              ),
+                            ),
+                          )
+                        else if (state.similarStatus == SimilarMoviesStatus.success && state.similarMovies != null)
+                          SimilarSection(movies: state.similarMovies!.movies)
+                        else if (state.similarStatus == SimilarMoviesStatus.error)
+                          SliverToBoxAdapter(
+                            child: Center(child: Text(state.similarError ?? "Error loading similar movies")),
+                          ),
+
+                        SummarySection(summary: state.movieDetails!.movie?.descriptionFull ?? ""),
+                        CastSection(cast: state.movieDetails!.movie?.cast ?? []),
+                        GenresSection(genres: state.movieDetails!.movie?.genres ?? []),
                       ],
-                    );
-                  } else if (state is MovieDetailsFailure) {
-                    return SliverToBoxAdapter(
+                    )
+                  else if (state.detailsStatus == MovieDetailsStatus.error)
+                    SliverToBoxAdapter(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        spacing: 16.h,
                         children: [
-                          SizedBox(height: 20.h),
-                          Text(
-                            state.message,
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
-                          Icon(
-                            Icons.error,
-                            color: Theme.of(context).colorScheme.error,
-                            size: 50.h,
-                          ),
+                          SizedBox(height: 50.h),
+                          Text(state.detailsError ?? "Error loading details"),
                         ],
                       ),
-                    );
-                  }
-                  return Container();
-                },
-              ),
-            ],
+                    ),
+                ],
+              );
+            },
           ),
         ),
       ),

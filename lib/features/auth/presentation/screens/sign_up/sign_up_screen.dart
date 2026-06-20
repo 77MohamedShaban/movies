@@ -33,11 +33,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void initState() {
-    emailController = TextEditingController(text: "mohamed@gmail.com");
-    passwordController = TextEditingController(text: "M.m01116955612");
-    nameController = TextEditingController(text: "Mohamed");
-    phoneController = TextEditingController(text: "01116955612");
-    confirmController = TextEditingController(text: "M.m01116955612");
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    nameController = TextEditingController();
+    phoneController = TextEditingController();
+    confirmController = TextEditingController();
     super.initState();
   }
 

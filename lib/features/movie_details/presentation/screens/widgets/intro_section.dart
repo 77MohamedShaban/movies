@@ -1,35 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/resources/assets_manager.dart';
 import '../../../../../core/resources/colors_manager.dart';
+import '../../view_models/movie_details_cubit.dart';
 
-class IntroSection extends StatefulWidget {
-  String image;
-  String title;
-  String date;
+class IntroSection extends StatelessWidget {
+  final String image;
+  final String title;
+  final String date;
+  final int movieId;
 
-  IntroSection({
+  const IntroSection({
     required this.image,
     required this.title,
     required this.date,
+    required this.movieId,
     super.key,
   });
-
-  @override
-  State<IntroSection> createState() => _IntroDetailsState();
-}
-
-class _IntroDetailsState extends State<IntroSection> {
-  bool watchList = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        image: widget.image != ''
+        image: image != ''
             ? DecorationImage(
-                image: NetworkImage(widget.image),
+                image: NetworkImage(image),
                 fit: BoxFit.cover,
               )
             : null,
@@ -55,26 +52,29 @@ class _IntroDetailsState extends State<IntroSection> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
+                    onTap: () => Navigator.pop(context),
                     child: Icon(
                       Icons.arrow_back_ios_rounded,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        watchList = !watchList;
-                      });
+                  BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
+                    buildWhen: (prev, curr) => prev.isWatchlisted != curr.isWatchlisted,
+                    builder: (context, state) {
+                      final bool isWatchlisted = state.isWatchlisted;
+                      return GestureDetector(
+                        onTap: () {
+                          context.read<MovieDetailsCubit>().toggleWatchlist(movieId);
+                        },
+                        child: Icon(
+                          isWatchlisted ? Icons.bookmark : Icons.bookmark_border_rounded,
+                          color: isWatchlisted
+                              ? Theme.of(context).colorScheme.onPrimaryContainer
+                              : Theme.of(context).colorScheme.onPrimary,
+                          size: 30.sp,
+                        ),
+                      );
                     },
-                    child: Icon(
-                      Icons.bookmark,
-                      color: watchList
-                          ? Theme.of(context).colorScheme.onPrimaryContainer
-                          : Theme.of(context).colorScheme.onPrimary,
-                    ),
                   ),
                 ],
               ),
@@ -82,17 +82,17 @@ class _IntroDetailsState extends State<IntroSection> {
               Column(
                 children: [
                   Text(
-                    widget.title,
+                    title,
                     style: Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.center,
                   ),
                   SizedBox(height: 16.h),
                   Text(
-                    widget.date,
+                    date,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: ColorsManager.gray,
-                    ),
+                          fontWeight: FontWeight.w700,
+                          color: ColorsManager.gray,
+                        ),
                   ),
                 ],
               ),

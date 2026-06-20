@@ -15,11 +15,11 @@ void main() async {
   await ScreenUtil.ensureScreenSize();
   await PrefsManager.init();
   configureDependencies();
-  runApp(const MyApp());
+  runApp(const MoviesApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MoviesApp extends StatelessWidget {
+  const MoviesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
