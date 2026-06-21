@@ -1,6 +1,14 @@
 # Movies App 🎬
 
-Movies App is a Flutter-based movie discovery application that allows users to explore trending, popular, and upcoming movies, view detailed information, and manage a personalized watch experience. The app is built using Clean Architecture and follows scalable state management practices to ensure performance, maintainability, and modularity.
+**Movies Hub** is a premium cinematic discovery platform meticulously crafted to transform how enthusiasts engage with the world of film. The application's primary purpose is to serve as a centralized, high-performance guide that bridges the gap between viewers and the vast global database of cinema. By providing on-demand access to curated trending data, detailed metadata, and immersive visual previews, Movies Hub enables users to explore, discover, and organize their cinematic journey in a secure and highly responsive digital environment. Whether you are seeking the latest blockbusters or building a private collection of masterpieces, the platform empowers you to make informed viewing decisions and manage your cinematic library with precision.
+
+## 🌟 Impact
+
+Movies Hub redefines the digital cinematic experience by delivering:
+- **Optimized Discovery**: Drastically reduces search friction through curated feeds of Popular, Trending, and Upcoming releases.
+- **Informed Exploration**: Empowers users with deep metadata, high-definition screenshot galleries, and real-time ratings to guide their viewing choices.
+- **Personalized Persistence**: Provides a secure, cloud-integrated space to build a private Watchlist and track Viewing History effortlessly using Firebase Cloud Firestore.
+- **Elite Performance**: Features a responsive, lag-free UI that matches the premium quality of the cinematic masterpieces it showcases.
 
 ## 📸 Screenshots
 
@@ -84,63 +92,61 @@ Movies App is a Flutter-based movie discovery application that allows users to e
 <img width="200" alt="Screenshot_20260608_200048" src="https://github.com/user-attachments/assets/30a43976-37fb-4027-b539-211e84ade8d3" />
        </td>
        </tr>
-
-
   </table>
 </div>
 
-## 🌟 Impact
-
-Movies App significantly enhances the user's cinematic exploration by:
-- **Optimizing Discovery**: Reducing the time spent searching for quality content through curated feeds and high-performance search.
-- **Enriching Exploration**: Providing deep insights and high-fidelity visuals that help users make informed viewing decisions.
-- **Empowering Personalization**: Allowing users to maintain a secure, private movie library that reflects their unique tastes.
-- **Delivering Performance**: Offering a smooth, lag-free experience that matches the high quality of modern cinema.
-
 ## 🚀 Features
 
-- **Authentication**: Secure Login and Sign-up flow via Firebase, including one-tap Google Sign-In integration.
-- **Cinema Discovery**: Explore dynamic feeds of Trending, Popular, and highly anticipated Upcoming releases.
-- **Smart Search**: High-performance search engine equipped with state-managed pagination and infinite scrolling for a lag-free experience.
-- **Movie Details**: Comprehensive insights including plot synopses, user ratings, and high-definition screenshot galleries.
-- **Smart Recommendations**: Never run out of content with an AI-driven suggestion engine for similar movies based on current interests.
-- **Profile Management**: Personalized profile customization and secure data persistence powered by Cloud Firestore.
+- **Authentication**: Secure Login and Sign-up flow powered by Firebase, with integrated one-tap **Google Sign-In**.
+- **Cinema Discovery Dashboard**: Instant access to "Trending", "Popular", and "Upcoming" movies synced from global APIs.
+- **Smart Paginated Search**: A high-performance search engine with **infinite scrolling** support to browse thousands of results with zero performance lag.
+- **Personalized Watchlist**: Save your favorite movies to a private collection using the **Bookmark** feature, securely stored and retrieved from Cloud Firestore.
+- **Viewing History**: Automatically tracks your cinematic journey as you explore movie details or launch trailers, ensuring your library is always up to date.
+- **Immersive Movie Details**: 
+    - Full plot overviews, user ratings, and release metadata.
+    - High-definition screenshot galleries for visual previews.
+    - Detailed list of actors and characters (Cast).
+- **Intelligent Recommendations**: AI-driven "Similar Movies" engine to keep the discovery cycle moving.
+- **Profile Management**: 
+    - Real-time identity updates (Name, Phone).
+    - **Interactive Avatar Selection**: Customize your profile persona with a variety of unique avatars.
+    - Secure account management including logout and account deletion.
+- **Offline Awareness**: Integrated connectivity checks to provide a consistent user experience during network fluctuations.
 - **Responsive UI**: Fully responsive design using `flutter_screenutil` to support various screen sizes and orientations.
-- **Visual Excellence**: Immersive micro-interactions and smooth animations powered by `Lottie` and `flutter_animate`.
 
 ## 🛠 Tech Stack & Tools
 
-- **Framework**: [Flutter](https://flutter.dev/)
-- **State Management**: [Flutter BLoC / Cubit](https://pub.dev/packages/flutter_bloc) for predictable and reactive state handling.
-- **Dependency Injection**: [GetIt](https://pub.dev/packages/get_it) & [Injectable](https://pub.dev/packages/injectable) for modularity and decoupled service management.
+- **Framework**: [Flutter](https://flutter.dev/) (Dart)
+- **State Management**: [Flutter BLoC / Cubit](https://pub.dev/packages/flutter_bloc) for predictable and reactive UI handling.
+- **Architecture**: **Clean Architecture** (Feature-First) ensuring strict separation of Data, Domain, and Presentation layers.
+- **Dependency Injection**: [GetIt](https://pub.dev/packages/get_it) & [Injectable](https://pub.dev/packages/injectable) for modular and decoupled code.
 - **Networking**: [Retrofit](https://pub.dev/packages/retrofit) & [Dio](https://pub.dev/packages/dio) for type-safe and efficient REST API communication.
-- **Backend**: [Firebase](https://firebase.google.com/) (Authentication & Cloud Firestore).
-- **Architecture**: Clean Architecture (Data, Domain, and Presentation layers).
-- **UI Utilities**:
+- **Backend Services**: [Firebase](https://firebase.google.com/) (Authentication & Cloud Firestore).
+- **UI & Animations**:
     - `flutter_screenutil` for pixel-perfect responsiveness.
     - `cached_network_image` for optimized image loading and caching.
-    - `lottie` & `flutter_animate` for modern micro-interactions.
+    - `lottie` & `flutter_animate` for premium micro-interactions.
     - `flutter_svg` for scalable vector graphics.
 
 ## 📂 Project Structure
 
-The project follows a feature-first Clean Architecture folder structure:
+The project follows a modular, feature-first Clean Architecture structure:
 
 ```text
 lib/
-├── core/                  # Global utilities, DI setup, routes, themes, and network configuration
-│   ├── di/                # Dependency Injection setup
-│   ├── remote/            # Local & Remote data source handlers
-│   ├── resources/         # App constants, colors, and styles
-│   ├── routes_manager/    # Navigation and routing logic
-│   └── reusable_component/# Reusable UI components
-├── features/              # Feature-specific modules
-│   ├── auth/              # Login, Register, and Social Authentication
-│   ├── intro/             # Splash screen and interactive Onboarding flow
-│   ├── main_layout/       # Home, Search (Paginated), Browse, and Profile tabs
-│   ├── movie_details/     # Movie insights, Galleries, and Recommendations
-│   └── update-profile/    # Profile customization and Firestore persistence
-└── main.dart              # Application entry point
+├── core/                  # Infrastructure: DI setup, Themes, Routes, & Reusable components
+│   ├── di/                # Dependency Injection configurations
+│   ├── remote/            # API clients (Retrofit) and Local Persistence (Prefs)
+│   ├── resources/         # App constants, Assets, and Theme definitions
+│   ├── routes_manager/    # Navigation and Routing logic
+│   └── reusable_component/# Common UI components (MovieItems, Buttons, etc.)
+├── features/              # Feature-driven Business Logic
+│   ├── auth/              # Identity management (Login, SignUp, Social Auth)
+│   ├── intro/             # Branding, Splash, and interactive Onboarding flow
+│   ├── main_layout/       # Core Hub: Home, Search (Paginated), Browse, and Profile
+│   ├── movie_details/     # Immersive Insights & AI recommendation engine
+│   └── update-profile/    # Profile customization and account management
+└── main.dart              # Multi-layered application initialization
 ```
 
 ## ⚙️ Installation & Setup
