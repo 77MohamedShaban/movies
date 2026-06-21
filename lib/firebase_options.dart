@@ -70,6 +70,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '333990642707',
     projectId: 'movies-9c079',
     storageBucket: 'movies-9c079.firebasestorage.app',
+    androidClientId: '333990642707-sdtbu8juulpnonstpp3cthc46k35iqbp.apps.googleusercontent.com',
     iosClientId: '333990642707-7g5lrm5l5ij6p4f71rjjgs265hn7c3t1.apps.googleusercontent.com',
     iosBundleId: 'com.movies.movies',
   );
