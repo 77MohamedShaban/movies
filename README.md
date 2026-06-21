@@ -1,6 +1,6 @@
 # Movies App 🎬
 
-**Movies Hub** is a premium cinematic discovery platform meticulously crafted to transform how enthusiasts engage with the world of film. The application's primary purpose is to serve as a centralized, high-performance guide that bridges the gap between viewers and the vast global database of cinema. By providing on-demand access to curated trending data, detailed metadata, and immersive visual previews, Movies Hub enables users to explore, discover, and organize their cinematic journey in a secure and highly responsive digital environment. Whether you are seeking the latest blockbusters or building a private collection of masterpieces, the platform empowers you to make informed viewing decisions and manage your cinematic library with precision.
+**Movies** is a premium cinematic discovery platform meticulously crafted to transform how enthusiasts engage with the world of film. The application's primary purpose is to serve as a centralized, high-performance guide that bridges the gap between viewers and the vast global database of cinema. By providing on-demand access to curated trending data, detailed metadata, and immersive visual previews, Movies Hub enables users to explore, discover, and organize their cinematic journey in a secure and highly responsive digital environment. Whether you are seeking the latest blockbusters or building a private collection of masterpieces, the platform empowers you to make informed viewing decisions and manage your cinematic library with precision.
 
 ## 🌟 Impact
 
