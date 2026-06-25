@@ -10,6 +10,9 @@ Movies Hub redefines the digital cinematic experience by delivering:
 - **Personalized Persistence**: Provides a secure, cloud-integrated space to build a private Watchlist and track Viewing History effortlessly using Firebase Cloud Firestore.
 - **Elite Performance**: Features a responsive, lag-free UI that matches the premium quality of the cinematic masterpieces it showcases.
 
+## 🎬 Demo
+👉 Watch Demo Video: https://www.linkedin.com/posts/mohamed-shaban-480019398_flutter-dart-mobiledevelopment-ugcPost-7474524691366522880-Y5ec/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAGGI0GABNB-j_SY7kBI5UbRrqZX0uGYNWw8
+
 ## 📸 Screenshots
 
 <div align="center">
