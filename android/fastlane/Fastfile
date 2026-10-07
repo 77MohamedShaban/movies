@@ -1,0 +1,17 @@
+default_platform(:android)
+
+platform :android do
+    desc "Distribute APK to firebase_app_distribution"
+    lane :firebase_distribution do
+        sh "flutter clean"
+        sh "flutter build apk --release --flavor prod"
+        firebase_app_distribution(
+            app: "1:333990642707:android:d9e8950996b44e2c006be6",
+            firebase_cli_token:ENV["FIREBASE_CLI_TOKEN"],
+            android_artifact_type:"APK",
+            android_artifact_path:"../build/app/outputs/flutter-apk/app-prod-release.apk",
+            testers: "mohamed.shabanzakaryia77@gmail.com, mohamed.shabanzakaryi55@gmail.com",
+            release_notes: "last version for android 1.0.2+1"
+        )
+    end
+end
